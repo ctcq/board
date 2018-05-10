@@ -10,8 +10,8 @@ function refresh(t){
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == XMLHttpRequest.DONE) {			
 			//Replaces everything
-			output.innerHTML += this.responseText;
-			window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+			$('#output').append(this.responseText);
+			$(".output-wrap").animate({ scrollTop: $('.output-wrap').prop("scrollHeight")}, 1000);
 			}
 		};
 		
@@ -39,15 +39,13 @@ function newEvent(d,t,m){
 
 window.onload = function(){
     
-    var submitButton = document.getElementById('submitButton');
-
-    var nameInput = document.getElementById('messageName');
-    var messageInput = document.getElementById('messageArea');
+    var nameInput = $('#messageName');
+    var messageInput = $('#messageArea');
 	
-	var statusBar = document.getElementById('status');
-	var output = document.getElementById('output');
+	var statusBar = $('#status');
+	var output = $('#output-wrap');
 
-    submitButton.onclick = function(){
+    $('#submitButton').click(function(){
 		
 		if(messageInput.value == ""){
 			return;
@@ -55,30 +53,85 @@ window.onload = function(){
 		
 		var xhr = new XMLHttpRequest();
 		var postData = new FormData();
-		postData.append('name',nameInput.value);
-		postData.append('message',messageInput.value);
+		postData.append('name',nameInput.val());
+		postData.append('message',messageInput.val());
 		xhr.onreadystatechange = function() {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
-			statusBar.innerHTML = xhr.responseText;
+			statusBar.text(xhr.responseText);
 			messageInput.value = "";
-			refreshButton.click();
+			$('#refreshButton').click();
 			}
 		}
        xhr.open("post", "save.php");
        xhr.send(postData);
-    };
+    });
 	
-	refreshButton.onclick = function(){
+	$('#refreshButton').click(function(){
 		LAST_REFRESHED = refresh(10*LAST_REFRESHED); //10 bc php microtime got one more digit :/
-	};
+	});
 	
-	$(".toggle-comment").click(function(){
-		console.log("triggered");
-		if(!this.checked === true){
-			$(this).parent().siblings(".message-post").css("display","block");
+	// Collapse/Expand Comments
+	
+	$(".post-wrap").click(function(){
+		if($(this).children(".message-post").css('display') == 'none'){
+			$(this).children(".message-post").css("display","block");
+			$(this).children(".name-post").css("display","block");
+			$(this).children(".time-post").css("display","block");
 		}
 		else{
-			$(this).parent().siblings(".message-post").css("display","none");
+			$(this).children(".message-post").css("display","none");
+			$(this).children(".name-post").css("display","inline");
+			$(this).children(".time-post").css("display","inline");
 		}
+	});	
+	
+	// Show/Hide Tabs
+	
+	$("#showManuals").click(function(){
+		$('.tab').css("display","none");
+		$('#manuals-tab').css("display","block");
 	});
+	
+	$("#showChat").click(function(){
+		// Show all Events and Posts in case disabled
+		$('.post').css("display","block");
+		$('.event').css("display","block");
+		
+		$('.tab').css("display","none");
+		$('#chat-tab').css("display","block");
+	});
+	
+	$("#showNewEvent").click(function(){
+		//Hide all Tabs
+		$('.tab').css("display","none");
+		//Show NewEvent Tab
+		$('#newEvent-tab').css("display","block");
+	});
+	
+	$("#showEvents").click(function(){
+		//Show Chat Tab
+		$('.tab').css("display","none");
+		$('#chat-tab').css("display","block");	
+		
+		//Disable all Posts and show all events
+		$('.post').css("display","none");
+		$('.event').css("display","block");
+	});
+	
+	/*
+		NewEventTab Stuff
+	*/	
+	$( function() {
+		$( "#datepicker" ).datepicker();
+	} );
+	
+	$("#submitEvent").click(function(){
+		newEvent($("#datepicker").val(),$("#eventTitleInput").val(),$("#eventDescription").val());
+		/*
+		Todo show calendar
+		until then
+		*/
+		$("#showChat").click();
+	});
+	
 };

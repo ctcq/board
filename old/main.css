@@ -5,14 +5,15 @@
 */
 
 body{
-	font-size: 150%;
+    background: black;
 }
 
 .header-wrap{
+    position: fixed;
     top:0;
     width: 100%;
-    height:15vh;
-	font-size: 12vh;
+    height:5vw;
+    overflow: none;
     background-color: seagreen;
     
     border-color: whitesmoke;
@@ -23,32 +24,35 @@ body{
 }
 
 .site-wrap{
+    
+    background: black;
 }
 
-.output-wrap{	
-	height: 70vh;
-	width: 100%;
+.output-wrap{
+    margin-top: 5vw;
+    margin-bottom:10vw;
     
     background: #aeebcc;
-	overflow: auto;
 }
 
-.post-wrap{
-    margin-top: 1vw;
+.post-wrap{    
+    overflow-x: none;
+      
+    margin-top: 2vw;
     padding: 20px;
     
     border-style: solid;
     border-color: black;
     border-radius: 10px; 
-	
-	background-color:#e6ffb3;
 }
 
-.input-wrap{
+.input-wrap{   
+    position: fixed;
     width: 100%;
     overflow: none;
     bottom: 0;
     
+    height: 10vw;
     
     background:#7bc19d;
     
@@ -59,34 +63,16 @@ body{
     border-bottom: none;
 }
 
-.name-post{
-	font-weight: bold;
-}
-
-.message-post{
-	margin: 10px;
-}
-
-.time-post{
-	font-size: 80%;
-}
-
 #messageArea{
     
 }
 
-.event{
-	border-color: red;
-}
-
-#changeNameButton,#messageName,#submitButton,#messageArea,#refreshButton{
+#changeNameButton,#messageName,#submitButton,#messageArea{
     display: block;
     text-align: center;
     position: relative;
-	
-	font-size: 5vh;
     
-    height: 10vh;
+    height: 6.5vw;
     width:100%;
     padding: 5px;
     margin-bottom: 5px;
@@ -100,7 +86,7 @@ body{
     border-radius: 20px;
 }
 
-.nameButton-wrap, .nameInput-wrap, .message-wrap, .submitButton-wrap, .refreshButton-wrap{
+.nameButton-wrap, .nameInput-wrap, .message-wrap, .submitButton-wrap{
     position: relative;
     margin: 5px;
     margin-bottom: 10px;
@@ -111,11 +97,6 @@ body{
     bottom:0;
     
 }
-
-.post-wrap:hover{
-	background: white;
-}
-
 #messageName{
     width:15vw;
 }
@@ -126,7 +107,7 @@ body{
     text-align: left;
 }
 
-#submitButton, #refreshButton{
+#submitButton{
     font-weight: bold;
     width: 10vw;
 }
@@ -136,69 +117,17 @@ body{
     padding:10px;
 }
 
-#submitButton, #changeNameButton, #refreshButton{
+#submitButton, #changeNameButton{
     background-color: #003300;
     color: #dbe6e4;
 }
 
-#submitButton:hover, #changeNameButton:hover, #refreshButton:hover{
+#submitButton:hover, #changeNameButton:hover{
     background-color: #00cc66;
     color: #003300;
 }
 
-#submitButton:active, #changeNameButton:active, #refreshButton:hover{
+#submitButton:active, #changeNameButton:active{
     background-color: #00cc66;
     color: #003300;
-}
-
-/*
-	Manual Stuff
-*/
-
-#manuals-tab{
-	display: none;
-}
-.manuals-wrap{
-	display: block;
-	overflow:auto;
-}
-
-.manual-elem{
-				text-decoration:none;
-				color: black;
-				
-				display:block;
-				margin:10px;
-				padding: 10px;
-				
-				border-color: black;
-				border-style: solid;
-				border-radius: 10px;
-			}
-			
-			.manual-elem:hover{
-				background: white;
-			}
-			
-			.manual-elem-icon{
-				width: 5vw;
-				vertical-align: middle;
-			}
-			
-			.manual-elem-text{
-				margin-left: 5px;
-				font-size: 3.5vw;
-				vertical-align: middle;
-			}
-			
-/*
-New Event Stuff
-*/
-
-#newEvent-tab{
-	display:none;
-}
-
-l#newEvent-tab < label{
-	display: block;
 }

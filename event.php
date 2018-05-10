@@ -10,12 +10,7 @@ class Event{
 		$this->message = htmlspecialchars($message);
 		$this->filename = "./savedPosts/".strtotime($this->date).".".$this->title.".rpd";
 	}
-	
-	function getFormattedTime(){
-			$time = DateTime::createFromFormat('U.u', $this->time);
-			return $time->format("d-m-Y H:i:s");
-		}
-	
+		
 	function writeHTML(){
 			return "
                 <div class='post-wrap event'>
