@@ -1,15 +1,14 @@
 <?php
+require_once "content.php";
 
-// includes all info about post
-	
-	class Post{
+//	Textpost for Chat
+	class Post extends Content{
 		
 		function __construct($n,$m){
 			//date_default_timezone_set('UTC');
 			$this->time = microtime(true);
 			$this->name = htmlspecialchars($n);
 			$this->message = htmlspecialchars($m);
-			$this->filename = "./savedPosts/".str_replace(".","",$this->time).".rpd";
 		}
 		
 		function getFormattedTime(){
@@ -19,19 +18,20 @@
 		
 		function writeHTML(){
 			return "
-                <div class='post-wrap post'>
-                    <div class='name-post'>
+                <div class='content-wrap post'>
+                    <div class='content-name'>
 						".$this->name."
                     </div>
-                    <div class='message-post'>
+                    <div class='content-message'>
                        ".str_replace("\n","<br>",$this->message)."
                     </div>					
-                    <div class='time-post'>
+                    <div class='content-time'>
 						".$this->getFormattedTime()."
                     </div>
                 </div>
 			";
 		}
+		/*
 		function save(){
 		// Save serialized class with current date at 0:00 as filename
 		$file = fopen($this->filename, "w") or die("Speichern fehlgeschlagen!");
@@ -39,7 +39,7 @@
 		fclose($file);
 		return $this->filename;
 	}
-		
+		*/
 	}
 
 ?>

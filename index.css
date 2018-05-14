@@ -5,15 +5,17 @@
 */
 
 body{
-	font-size: 150%;
+	font-size: 100%;
+	background: #e6ffb3;
 }
 
 .header-wrap{
+	
     top:0;
     width: 100%;
-    height:15vh;
-	font-size: 12vh;
+    height:5vh;
     background-color: seagreen;
+	
     
     border-color: whitesmoke;
     border-radius: 10px;
@@ -21,8 +23,41 @@ body{
     text-align: center;
     color: white;   
 }
+#header-row{
+	vertical-align: center;
+}
+
+.tab-button{
+	width: 20vw;
+	
+	margin-left: 10px;
+	margin-right: 10px;
+	
+	padding-left: 2vw;
+	padding-left: 2vw;
+	
+	font-size: 3vh;
+	
+	text-align: center;
+}
+
+.tab-button:hover{
+	background-color: beige;
+	border-radius: 0px 0px 5px 5px;
+	color: black;
+	text-decoration: underline;
+	
+	cursor: hand;
+}
 
 .site-wrap{
+}
+
+.filetransfer-wrap{
+	display:none;
+	position:absolute;
+	left: 50vw;
+	top: 50vh;
 }
 
 .output-wrap{	
@@ -33,9 +68,11 @@ body{
 	overflow: auto;
 }
 
-.post-wrap{
-    margin-top: 1vw;
-    padding: 20px;
+.content-wrap{
+    margin-top: 1vh;
+	
+	padding-top: 1vh;
+	padding-left: 1vw;
     
     border-style: solid;
     border-color: black;
@@ -48,7 +85,7 @@ body{
     width: 100%;
     overflow: none;
     bottom: 0;
-    
+	position: fixed;    
     
     background:#7bc19d;
     
@@ -59,15 +96,15 @@ body{
     border-bottom: none;
 }
 
-.name-post{
+.content-name{
 	font-weight: bold;
 }
 
-.message-post{
+.content-message{
 	margin: 10px;
 }
 
-.time-post{
+.content-time{
 	font-size: 80%;
 }
 
@@ -79,7 +116,7 @@ body{
 	border-color: red;
 }
 
-#changeNameButton,#messageName,#submitButton,#messageArea,#refreshButton{
+#messageName,#submitButton,#messageArea,#refreshButton{
     display: block;
     text-align: center;
     position: relative;
@@ -112,7 +149,7 @@ body{
     
 }
 
-.post-wrap:hover{
+.content-wrap:hover{
 	background: white;
 }
 
@@ -197,8 +234,10 @@ New Event Stuff
 
 #newEvent-tab{
 	display:none;
-}
-
-l#newEvent-tab < label{
-	display: block;
+	border-color: red;
+	border-radius: 5px;
+	border-style: solid;
+	
+	padding: 10px;
+	
 }

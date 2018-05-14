@@ -2,8 +2,9 @@
 
 require_once "post.php";
 require_once "event.php";
+require_once "shortcut.php";
 
-$saveLocation = "./savedPosts";
+$saveLocation = "./saves/";
 
 // Prints all posts since $time in chronological order in in HTML
 function printAllSince($time){

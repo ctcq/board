@@ -9,7 +9,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src='index.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -21,11 +20,15 @@
 		<span id='status'>
 		</span>
         <div class='header-wrap'>
-			<button id='showChat' class='tabButton'>Chat</button>
-			<button id='showEvents' class='tabButton'>Ankündigungen</button> <!--- Insert number of unread events later --->
-			<button id='showNewEvent' class='tabButton'>Veranstaltung ansagen</button>
-			<button id='showManuals' class='tabButton'>Anleitungen</button>
-        </div>
+			<table>
+				<tr id='header-row'>
+					<td id='showChat' class='tab-button'>Chat</td>
+					<td id='showEvents' class='tab-button'>Veranstaltungen</td> <!--- Insert number of unread events later --->
+					<td id='showNewEvent' class='tab-button'>Event ankündigen</td>
+					<td id='showManuals' class='tab-button'>Anleitungen</td>
+				</tr>
+			</table>
+		</div>
         
         <div class='site-wrap'>
 		
@@ -74,8 +77,14 @@
 			</div>
 		</div>
 		
+		<div class="filetransfer-wrap">
+			<img scr="./icons/textfile.png"></img>
+			<label>Datei hierhin ziehen </label>
+		</div>
+		
 			<script>
 				window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
 			</script>
+			<script src='index.js'></script>
     </body>
 </html>

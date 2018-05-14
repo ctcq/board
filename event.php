@@ -1,32 +1,32 @@
 <?php
-require_once "post.php";
+require_once "content.php";
 
-class Event{
+// Content for Event tab
+class Event extends Content{
 	
 	function __construct($date, $title, $message){
 		date_default_timezone_set('Europe/Berlin');
 		$this->date = $date; //Format like "22-04-2018"
 		$this->title = htmlspecialchars($title);
 		$this->message = htmlspecialchars($message);
-		$this->filename = "./savedPosts/".strtotime($this->date).".".$this->title.".rpd";
 	}
-		
+	
 	function writeHTML(){
 			return "
-                <div class='post-wrap event'>
-                    <div class='name-post'>
+                <div class='content-wrap event'>
+                    <div class='content-name'>
 						".$this->title."
                     </div>
-                    <div class='message-post'>
+                    <div class='content-message'>
                        ".str_replace("\n","<br>",$this->message)."
                     </div>					
-                    <div class='time-post'>
+                    <div class='content-time'>
 						".htmlspecialchars($this->date)."
                     </div>
                 </div>
 			";
 		}
-	
+	/*
 	function save(){
 		// Save serialized class with current date at 0:00 as filename
 		$file = fopen($this->filename, "w") or die("Speichern fehlgeschlagen!");
@@ -34,7 +34,7 @@ class Event{
 		fclose($file);
 		return $this->filename;
 	}
-	
+	*/
 }
 
 ?>
